@@ -9,20 +9,6 @@
 import UIKit
 import MapKit
 
-class ViewPoint: NSObject, MKAnnotation {
-    
-    var coordinate: CLLocationCoordinate2D
-    var title: String?
-    var subtitle: String?
-    
-    // 생성자함수 init
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
-        self.coordinate = coordinate
-        self.title = title
-        self.subtitle = subtitle
-    }
-}
-
 class ViewController: UIViewController, MKMapViewDelegate {
     
     // 배열 선언
