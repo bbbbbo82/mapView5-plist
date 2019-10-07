@@ -27,47 +27,42 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         // plist 화일 불러오기
         let path = Bundle.main.path(forResource: "myData", ofType: "plist")
+        print(path!)
         
+        // 화일의 내용
         let contents = NSArray(contentsOfFile: path!)
+        print(contents!)
         
+        // 화일 내용 처리
+        // optional binding 하기
         if let myItems = contents {
             for item in myItems {
+                
                 let lat = (item as AnyObject).value(forKey: "lat")
                 let long = (item as AnyObject).value(forKey: "long")
                 let title = (item as AnyObject).value(forKey: "title")
                 let subTitle = (item as AnyObject).value(forKey: "subTitle")
                 
-                let annotation = MKPointAnnotation()
-                
+                // 위도, 경도 String에서 double로 형변환
                 let myLat = (lat as! NSString).doubleValue
                 let myLong = (long as! NSString).doubleValue
                 
-                annotation.coordinate.latitude = myLat
-                annotation.coordinate.longitude = myLong
-                annotation.title = title as? String
-                annotation.subtitle = subTitle as? String
+                let pin = MKPointAnnotation()
                 
-                pins.append(annotation) 
+                pin.coordinate.latitude = myLat
+                pin.coordinate.longitude = myLong
+                pin.title = title as? String
+                pin.subtitle = subTitle as? String
                 
+                // pins 배열에 append
+                pins.append(pin)
             }
+        } else {
+            // 아이템이 없을 때
+            print("nil 발생")
         }
-        
-        // pin꼽기
-//        let pin1 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594), title: "동의과학대학교", subtitle: "We Are DIT")
-//        pins.append(pin1)
-//        let pin2 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.1681824, longitude: 129.0556455), title: "부산시민공원", subtitle: "부산의 시민공원")
-//        pins.append(pin2)
-//        let pin3 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.147919, longitude: 129.130123), title: "광안대교", subtitle: "부산의 핫플레이스")
-//        pins.append(pin3)
-//        let pin4 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.0517554, longitude: 129.0856113), title: "태종대", subtitle: "부산의 관광명소(절벽 위 공원)")
-//        pins.append(pin4)
-//        
-        // mapView의 모든 pin들을 나타냄(배열)
-        //mapView.addAnnotations([pin1, pin2, pin3, pin4])
-        
         // mapView의 모든 pin들을 한 화면에 나타냄
         mapView.showAnnotations(pins, animated: true)
-        
     }
     
     // MapType 버튼 설정 (standard, hybrid, satellite)
