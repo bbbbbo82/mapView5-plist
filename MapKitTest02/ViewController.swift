@@ -41,7 +41,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func zoomToRegion() {
         
         let location = CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594)
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: 2000.0, longitudinalMeters: 4000.3)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 6000, longitudinalMeters: 12000)
         mapView.setRegion(region, animated: true)
     }
     
@@ -89,14 +89,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if annotation.title! == "동의과학대학교"  {
             annotationView?.pinTintColor = UIColor.red
             imgV = UIImageView(image: UIImage(named: "dit.png"))
-        } else if annotation.title! == "부산 시민공원"  {
-            annotationView?.pinTintColor = UIColor.green
+        } else if annotation.title! == "부산시민공원"  {
+            annotationView?.pinTintColor = UIColor.black
             imgV = UIImageView(image: UIImage(named: "cat.jpg"))
         } else if annotation.title! == "광안대교"  {
             annotationView?.pinTintColor = UIColor.blue
             imgV = UIImageView(image: UIImage(named: "광안대교.png"))
         } else {
-            annotationView?.pinTintColor = UIColor.yellow
+            annotationView?.pinTintColor = UIColor.purple
             imgV = UIImageView(image: UIImage(named: "태종대.png"))
         }
         
