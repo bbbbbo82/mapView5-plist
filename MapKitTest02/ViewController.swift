@@ -25,6 +25,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // MKMapViewDelegate와 UIViewController(self)
         mapView.delegate = self
         
+        // plist 화일 불러오기
         let path = Bundle.main.path(forResource: "myData", ofType: "plist")
         
         let contents = NSArray(contentsOfFile: path!)
