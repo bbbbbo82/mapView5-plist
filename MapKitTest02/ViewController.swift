@@ -12,7 +12,7 @@ import MapKit
 class ViewController: UIViewController, MKMapViewDelegate {
     
     // 배열 선언
-    var pins = [MKPointAnnotation]()
+    var pins = [MKAnnotation]()
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -22,28 +22,36 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // MapType 설정 (standard, hybrid, satellite)
         mapView.mapType = MKMapType.standard
         
+        // MKMapViewDelegate와 UIViewController(self)
+        mapView.delegate = self
+        
         //지도의 center, region, Map 설정
-        zoomToRegion()
+        //zoomToRegion()
         
         // pin꼽기
         let pin1 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594), title: "동의과학대학교", subtitle: "We Are DIT")
+        pins.append(pin1)
         let pin2 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.1681824, longitude: 129.0556455), title: "부산시민공원", subtitle: "부산의 시민공원")
+        pins.append(pin2)
         let pin3 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.147919, longitude: 129.130123), title: "광안대교", subtitle: "부산의 핫플레이스")
+        pins.append(pin3)
         let pin4 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.0517554, longitude: 129.0856113), title: "태종대", subtitle: "부산의 관광명소(절벽 위 공원)")
+        pins.append(pin4)
         
         // mapView의 모든 pin들을 나타냄(배열)
-        mapView.addAnnotations([pin1, pin2, pin3, pin4])
+        //mapView.addAnnotations([pin1, pin2, pin3, pin4])
         
-        // MKMapViewDelegate와 UIViewController(self)
-        mapView.delegate = self
+        // mapView의 모든 pin들을 한 화면에 나타냄
+        mapView.showAnnotations(pins, animated: true)
+        
     }
     
-    func zoomToRegion() {
-        
-        let location = CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594)
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: 6000, longitudinalMeters: 12000)
-        mapView.setRegion(region, animated: true)
-    }
+//    func zoomToRegion() {
+//
+//        let location = CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594)
+//        let region = MKCoordinateRegion(center: location, latitudinalMeters: 6000, longitudinalMeters: 12000)
+//        mapView.setRegion(region, animated: true)
+//    }
     
     // MapType 버튼 설정 (standard, hybrid, satellite)
     @IBAction func standardTypeButton(_ sender: Any) {
