@@ -25,19 +25,42 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // MKMapViewDelegate와 UIViewController(self)
         mapView.delegate = self
         
-        //지도의 center, region, Map 설정
-        //zoomToRegion()
+        let path = Bundle.main.path(forResource: "myData", ofType: "plist")
+        
+        let contents = NSArray(contentsOfFile: path!)
+        
+        if let myItems = contents {
+            for item in myItems {
+                let lat = (item as AnyObject).value(forKey: "lat")
+                let long = (item as AnyObject).value(forKey: "long")
+                let title = (item as AnyObject).value(forKey: "title")
+                let subTitle = (item as AnyObject).value(forKey: "subTitle")
+                
+                let annotation = MKPointAnnotation()
+                
+                let myLat = (lat as! NSString).doubleValue
+                let myLong = (long as! NSString).doubleValue
+                
+                annotation.coordinate.latitude = myLat
+                annotation.coordinate.longitude = myLong
+                annotation.title = title as? String
+                annotation.subtitle = subTitle as? String
+                
+                pins.append(annotation) 
+                
+            }
+        }
         
         // pin꼽기
-        let pin1 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594), title: "동의과학대학교", subtitle: "We Are DIT")
-        pins.append(pin1)
-        let pin2 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.1681824, longitude: 129.0556455), title: "부산시민공원", subtitle: "부산의 시민공원")
-        pins.append(pin2)
-        let pin3 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.147919, longitude: 129.130123), title: "광안대교", subtitle: "부산의 핫플레이스")
-        pins.append(pin3)
-        let pin4 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.0517554, longitude: 129.0856113), title: "태종대", subtitle: "부산의 관광명소(절벽 위 공원)")
-        pins.append(pin4)
-        
+//        let pin1 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594), title: "동의과학대학교", subtitle: "We Are DIT")
+//        pins.append(pin1)
+//        let pin2 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.1681824, longitude: 129.0556455), title: "부산시민공원", subtitle: "부산의 시민공원")
+//        pins.append(pin2)
+//        let pin3 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.147919, longitude: 129.130123), title: "광안대교", subtitle: "부산의 핫플레이스")
+//        pins.append(pin3)
+//        let pin4 = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.0517554, longitude: 129.0856113), title: "태종대", subtitle: "부산의 관광명소(절벽 위 공원)")
+//        pins.append(pin4)
+//        
         // mapView의 모든 pin들을 나타냄(배열)
         //mapView.addAnnotations([pin1, pin2, pin3, pin4])
         
@@ -45,13 +68,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.showAnnotations(pins, animated: true)
         
     }
-    
-//    func zoomToRegion() {
-//
-//        let location = CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594)
-//        let region = MKCoordinateRegion(center: location, latitudinalMeters: 6000, longitudinalMeters: 12000)
-//        mapView.setRegion(region, animated: true)
-//    }
     
     // MapType 버튼 설정 (standard, hybrid, satellite)
     @IBAction func standardTypeButton(_ sender: Any) {

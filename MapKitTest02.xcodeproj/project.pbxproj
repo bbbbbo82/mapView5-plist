@@ -18,6 +18,7 @@
 		0486DDA5232F5348006B3CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0486DDA3232F5348006B3CAF /* LaunchScreen.storyboard */; };
 		0486DDAE232F53A9006B3CAF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0486DDAD232F53A9006B3CAF /* MapKit.framework */; };
 		04D3E935234B07F700450365 /* ViewPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3E934234B07F700450365 /* ViewPoint.swift */; };
+		04D3E939234B1D0E00450365 /* myData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04D3E938234B1D0E00450365 /* myData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0486DDA6232F5348006B3CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0486DDAD232F53A9006B3CAF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		04D3E934234B07F700450365 /* ViewPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPoint.swift; sourceTree = "<group>"; };
+		04D3E938234B1D0E00450365 /* myData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = myData.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				0486DDA1232F5348006B3CAF /* Assets.xcassets */,
 				0486DDA3232F5348006B3CAF /* LaunchScreen.storyboard */,
 				0486DDA6232F5348006B3CAF /* Info.plist */,
+				04D3E938234B1D0E00450365 /* myData.plist */,
 				04D3E934234B07F700450365 /* ViewPoint.swift */,
 			);
 			path = MapKitTest02;
@@ -152,6 +155,7 @@
 				046637462341DB3700C60C2F /* 광안대교.png in Resources */,
 				046637442341D69900C60C2F /* dit.png in Resources */,
 				0486DDA5232F5348006B3CAF /* LaunchScreen.storyboard in Resources */,
+				04D3E939234B1D0E00450365 /* myData.plist in Resources */,
 				046637482341DB6900C60C2F /* 태종대.png in Resources */,
 				0486DDA2232F5348006B3CAF /* Assets.xcassets in Resources */,
 				046AB5952338ADD500BE187C /* cat.jpg in Resources */,
